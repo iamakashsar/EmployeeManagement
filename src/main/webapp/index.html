@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management System</title>
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Lottie for SVG Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.4/lottie.min.js"></script>
+
+    <style>
+        /* Dark, Futuristic Gradient Background */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphic Container */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            width: 480px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0; /* Animation */
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0px 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Animated Neon Button */
+        button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 0px 20px rgba(0, 198, 255, 0.8);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Background Floating Glowing Particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            animation: floatParticle 8s infinite ease-in-out alternate;
+        }
+
+        @keyframes floatParticle {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-50px); }
+        }
+
+        /* Lottie Animation */
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #lottie-animation {
+            width: 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glowing Floating Particles -->
+    <div class="particle" style="top: 10%; left: 20%; width: 40px; height: 40px;"></div>
+    <div class="particle" style="top: 50%; left: 70%; width: 50px; height: 50px;"></div>
+    <div class="particle" style="top: 80%; left: 40%; width: 30px; height: 30px;"></div>
+
+    <div class="container">
+        <h1>Employee Management System</h1>
+        <form action="addEmployee" method="GET">
+            <button type="submit">Add Employee</button>
+        </form>
+        <form action="detail" method="GET">
+            <button type="submit">View Employee Details</button>
+        </form>
+
+        <!-- Lottie Animation for Loading -->
+        <div class="loading">
+            <div id="lottie-animation"></div>
+        </div>
+    </div>
+
+    <script>
+        // GSAP Page Load Animation
+        gsap.to(".container", { opacity: 1, y: -20, duration: 1.2, ease: "power2.out" });
+
+        // Floating Particle Animation
+        document.querySelectorAll(".particle").forEach((particle, index) => {
+            gsap.to(particle, {
+                y: gsap.utils.random(-50, 50),
+                x: gsap.utils.random(-50, 50),
+                duration: gsap.utils.random(4, 8),
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: index * 0.5
+            });
+        });
+
+        // Lottie Animation for Loading
+        var animation = bodymovin.loadAnimation({
+            container: document.getElementById("lottie-animation"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "https://assets10.lottiefiles.com/packages/lf20_touohxv0.json" // Replace with a suitable business-related animation URL
+        });
+    </script>
+
+</body>
+</html>

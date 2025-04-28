@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee Details</title>
+    <style>
+        body {
+            background-color: #1a1a2e; /* Deep navy blue */
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 30px;
+        }
+
+        /* Fade-in effect for the entire form */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        form {
+            background: rgba(0, 0, 50, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 25px cyan;
+            backdrop-filter: blur(15px);
+            animation: slideUp 1s ease-in-out;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="radio"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 100%;
+            transition: 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus {
+            outline: none;
+            border-color: cyan;
+            background-color: #262626;
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: space-around;
+            padding-top: 10px;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 12px 30px;
+            background-color: cyan;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            box-shadow: 0 0 10px cyan, 0 0 20px cyan;
+            width: 100%;
+            max-width: 200px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+            box-shadow: 0 0 30px cyan, 0 0 40px white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Title at the top -->
+    <h1>Update Employee Details</h1>
+
+    <!-- Form Section -->
+    <form action="update" method="post">
+        <table cellspacing="10px">
+            <tr>
+                <td><label for="id">Employee ID:</label></td>
+                <td><input type="number" name="id" required placeholder="Enter Employee ID"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Full Name:</label></td>
+                <td><input type="text" name="name" required placeholder="Enter Full Name"></td>
+            </tr>
+            <tr>
+                <td><label for="age">Age:</label></td>
+                <td><input type="number" name="age" required placeholder="Enter Age"></td>
+            </tr>
+            <tr>
+                <td><label>Select Gender:</label></td>
+                <td class="radio-group">
+                    <input type="radio" name="gender" value="Male" required> Male
+                    <input type="radio" name="gender" value="Female" required> Female
+                    <input type="radio" name="gender" value="Others" required> Others
+                </td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" name="email" required placeholder="Enter Email"></td>
+            </tr>
+            <tr>
+                <td><label for="phno">Phone Number:</label></td>
+                <td><input type="number" name="phno" required placeholder="Enter Phone Number"></td>
+            </tr>
+            <tr>
+                <td><label for="salary">Salary:</label></td>
+                <td><input type="number" name="salary" required placeholder="Enter Salary"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Update Employee</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
